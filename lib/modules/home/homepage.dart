@@ -136,6 +136,12 @@ flexibleSpace: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
+            // gradient: LinearGradient(
+            //   begin: Alignment.topLeft,
+            //   end: Alignment.bottomRight,
+            //   stops: [0.0, 0.5, 1.0],
+            //   colors: [Color.fromARGB(255, 84, 188, 236),Colors.red ,Colors.orange],
+            // ),
             image: DecorationImage(
               image: AssetImage('images/back.png'),
               fit: BoxFit.cover,
