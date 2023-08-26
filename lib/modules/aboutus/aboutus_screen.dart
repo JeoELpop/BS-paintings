@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:bs/modules/contact/contact_screen.dart';
 import 'package:bs/modules/home/homepage.dart';
 import 'package:flutter/material.dart';
