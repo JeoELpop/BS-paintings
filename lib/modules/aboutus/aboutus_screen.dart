@@ -14,57 +14,60 @@ class AboutUs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       
-      appBar: AppBar(
-         leading: IconButton(
-          onPressed: () {
-              Navigator.pop(context, HomePage.id);
-            },
-         icon: Icon(Icons.arrow_back_ios),
-         ),
-        centerTitle: true,
-        elevation: 0,
-        titleSpacing: 20,
-        title: Text('About Us',
-          style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w900,
-          color: Colors.white,
-        )
-        ),
-// title: CircleAvatar(
-//   radius: 27,
-//   backgroundImage:  AssetImage('images/icon.png'),
-  
-// ),
-flexibleSpace: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                stops: [0.0, 0.5, 1.0],
-                colors: [Color.fromARGB(255, 84, 188, 236),Colors.red ,Colors.orange],
-              ),
-      ),
-      ),
-      actions: [
-          IconButton(
-            icon: CircleAvatar(
-              backgroundColor: Colors.orange,
-              radius: 15,
-              child: Icon(
-                Icons.phone,
-                color: Colors.white,
-                size: 30,
-              ),
-            ),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(40.0),
+        child: AppBar(
+           leading: IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, Contact.id);
-            },
+                Navigator.pop(context, HomePage.id);
+              },
+           icon: Icon(Icons.arrow_back_ios),
+           ),
+          centerTitle: true,
+          elevation: 0,
+          titleSpacing: 20,
+          title: Text('About Us',
+            style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+            color: Colors.white,
+          )
           ),
-          SizedBox(
-              width: 15),
-        ],
+      // title: CircleAvatar(
+      //   radius: 27,
+      //   backgroundImage:  AssetImage('images/icon.png'),
+        
+      // ),
+      flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  stops: [0.0, 0.5, 1.0],
+                  colors: [Color.fromARGB(255, 84, 188, 236),Colors.red ,Colors.orange],
+                ),
         ),
+        ),
+        actions: [
+            IconButton(
+              icon: CircleAvatar(
+                backgroundColor: Colors.orange,
+                radius: 15,
+                child: Icon(
+                  Icons.phone,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, Contact.id);
+              },
+            ),
+            SizedBox(
+                width: 15),
+          ],
+          ),
+      ),
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(

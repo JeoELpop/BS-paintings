@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:bs/modules/aboutus/aboutus_screen.dart';
 import 'package:bs/modules/contact/contact_screen.dart';
 import 'package:bs/modules/home/homepage.dart';
+import 'package:bs/modules/main_home/main_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,10 +25,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'BS',
-      home: HomePage(title: 'BS For Paitnings',),
+      title: 'B.S',
+      home: MainHomePage(),
   routes: {
-    HomePage.id : (context) => HomePage(title: 'BS For Paitnings',),
+    MainHomePage.id : (context) => MainHomePage(),
+    HomePage.id : (context) => HomePage(title: 'B.S For Paitnings',),
     AboutUs.id : (context) => AboutUs(),
     Contact.id : (context) => Contact(),  
   },

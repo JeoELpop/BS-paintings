@@ -73,79 +73,82 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0,
-        title: Text('BS For Paitnings',
-          style: TextStyle(
-          fontSize: 25,
-          fontWeight: FontWeight.w900,
-          color: Colors.white,
-        )
-        ),
-// title: CircleAvatar(
-//   radius: 27,
-//   backgroundImage:  AssetImage('images/icon.png'),
-  
-// ),
-flexibleSpace: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                stops: [0.0, 0.5, 1.0],
-                colors: [Color.fromARGB(255, 84, 188, 236),Colors.red ,Colors.orange],
-              ),
-      ),
-      ),
-      actions: [
-          IconButton(
-            icon: CircleAvatar(
-              backgroundColor: Colors.orange,
-              radius: 15,
-              child: Icon(
-                Icons.phone,
-                color: Colors.white,
-                size: 30,
-              ),
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, Contact.id);
-            },
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(40.0),
+        child: AppBar(
+          centerTitle: true,
+          elevation: 0,
+          title: Text('B.S For Paitnings',
+            style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+            color: Colors.white,
+          )
           ),
-          SizedBox(
-              width: 15),
-          IconButton(
-            icon: CircleAvatar(
-              backgroundColor: Colors.orange,
-              radius: 15,
-              child: Icon(
-                Icons.person,
-                size: 30,
-              ),
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, AboutUs.id);
-            },
-          ),
-          SizedBox(
-              width: 15),
-        ],
+      // title: CircleAvatar(
+      //   radius: 27,
+      //   backgroundImage:  AssetImage('images/icon.png'),
+        
+      // ),
+      flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  stops: [0.0, 0.5, 1.0],
+                  colors: [Color.fromARGB(255, 84, 188, 236),Colors.red ,Colors.orange],
+                ),
         ),
+        ),
+        actions: [
+            IconButton(
+              icon: CircleAvatar(
+                backgroundColor: Colors.orange,
+                radius: 15,
+                child: Icon(
+                  Icons.phone,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, Contact.id);
+              },
+            ),
+            SizedBox(
+                width: 15),
+            IconButton(
+              icon: CircleAvatar(
+                backgroundColor: Colors.orange,
+                radius: 15,
+                child: Icon(
+                  Icons.person,
+                  size: 30,
+                ),
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, AboutUs.id);
+              },
+            ),
+            SizedBox(
+                width: 15),
+          ],
+          ),
+      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-            // gradient: LinearGradient(
-            //   begin: Alignment.topLeft,
-            //   end: Alignment.bottomRight,
-            //   stops: [0.0, 0.5, 1.0],
-            //   colors: [Color.fromARGB(255, 84, 188, 236),Colors.red ,Colors.orange],
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                stops: [0.0, 0.5, 1.0],
+                colors: [Color.fromARGB(255, 84, 188, 236),Colors.red ,Colors.orange],
+              ),
+            // image: DecorationImage(
+            //   image: AssetImage('images/back.png'),
+            //   fit: BoxFit.cover,
             // ),
-            image: DecorationImage(
-              image: AssetImage('images/back.png'),
-              fit: BoxFit.cover,
-            ),
           ),
           child: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -232,7 +235,7 @@ flexibleSpace: Container(
                               Text(
                                 '${paint.name}',
                                 style: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: 25,
                                   fontWeight: FontWeight.w900,
                                   color: Colors.white,
                                 ),
