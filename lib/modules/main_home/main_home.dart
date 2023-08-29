@@ -28,85 +28,259 @@ class _MainHomePageState extends State<MainHomePage> {
     return Scaffold(
       key: scaffoldKey,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
+          preferredSize: Size.fromHeight(40.0),
         child: AppBar(
-          backgroundColor: Colors.white70,
+          backgroundColor: Colors.grey.withOpacity(0),
+          flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  stops: [0.0, 0.5, 1.0],
+                  colors: [Colors.grey.withOpacity(0.7),Colors.grey.withOpacity(0.4) ,Colors.grey.withOpacity(0.1)],
+                ),
+        ),
+        ),
           centerTitle: true,
           elevation: 0,
-          title: Text('B.S For Paitnings',
-            style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w900,
-            color: Colors.red,
-          )
-          ),
           leading: IconButton(
               icon: CircleAvatar(
-                backgroundColor: Colors.white70,
+                backgroundColor: Colors.grey.withOpacity(0),
                 radius: 15,
                 child: Icon(
-                  Icons.phone,
-                  color: Colors.red,
+                  Icons.menu,
+                  color: Colors.black,
                   size: 30,
                 ),
               ),
-              onPressed: () {
-                Navigator.pushNamed(context, Contact.id);
-              },
+             onPressed: () {
+  
+    
+  
+                           if(isButtonPressed)
+  
+                        {
+  
+
+  
+                          Navigator.pop(context);
+  
+                         setState(() {
+  
+                           isButtonPressed=false;
+  
+                         });
+  
+                        }
+  
+                        else
+  
+                        {
+                          setState(() {
+  
+                           isButtonPressed=true;
+  
+                         });
+
+                                                   scaffoldKey.currentState?.showBottomSheet(
+                                                    backgroundColor: Colors.grey.withOpacity(0),
+                                                      transitionAnimationController: AnimationController(
+                                                        vsync: Navigator.of(context),
+                                                        duration: Duration(milliseconds: 500),
+                                                      ),
+                                                      constraints: BoxConstraints(
+                                                        maxHeight: double.infinity,
+                                                        minHeight: 100,
+                                                      ),
+                                                      enableDrag: false,
+                                                     (context) => Container(
+                                                       alignment: Alignment.topLeft,
+                                                       color:Colors.grey.withOpacity(0),
+                                                       child: Container(
+                                                       height: double.infinity,
+                                                           color: Colors.grey.withOpacity(0.2),
+                                                       child: Padding(
+                                                         padding: const EdgeInsets.all(8.0),
+                                                         child: Container(
+                                                           
+                                                           child: Column(
+                                                               
+                                                             mainAxisSize: MainAxisSize.min,
+                                                               
+                                                             children: [
+                                                               
+                                                                 
+                                                               
+                                                               TextButton(
+                                                              
+                                                                 onPressed: () {
+                                                                
+                                                                   Navigator.pushNamed(context, HomePage.id);
+                                                               
+                                                                 },
+                                                               
+                                                   child: Text(
+                                                  
+                                                     'Home',
+
+                                                     style: TextStyle(
+                                                    
+                                                       color: Colors.black,
+
+                                                       fontSize: 20.0,
+
+                                                       fontWeight: FontWeight.w900,
+
+                                                       ),
+
+                                                       ),
+
+                                                       ),
+
+                                                       SizedBox(
+                                                      
+                                                         height: 10,
+
+                                                       ),
+
+                                                       TextButton(
+                                                      
+                                                   onPressed: () {
+                                                  
+                                                     Navigator.pushNamed(context, AboutUs.id);
+
+                                                   },
+
+                                                   child: Text(
+                                                  
+                                                     'About Us',
+
+                                                     style: TextStyle(
+                                                    
+                                                       color: Colors.black,
+
+                                                       fontSize: 20.0,
+
+                                                       fontWeight: FontWeight.w900,
+
+                                                       ),
+
+                                                       ),
+
+                                                       ),
+
+                                                       SizedBox(
+                                                      
+                                                         height: 10,
+
+                                                       ),
+
+                                                       TextButton(
+                                                      
+                                                   onPressed: () {
+                                                  
+                                                     Navigator.pushNamed(context, Contact.id);
+
+                                                   },
+
+                                                   child: Text(
+                                                  
+                                                     'Contact Us',
+
+                                                     style: TextStyle(
+                                                    
+                                                       color: Colors.black,
+
+                                                       fontSize: 20.0,
+
+                                                       fontWeight: FontWeight.w900,
+
+                                                       ),
+
+                                                       ),
+
+                                                       ),
+
+                                                       SizedBox(
+                                                      
+                                                         height: 10,
+
+                                                       ),
+
+                                                       TextButton(
+                                                      
+                                                   onPressed: () {
+                                                  
+                                                     Navigator.pushNamed(context, Contact.id);
+
+                                                   },
+
+                                                   child: Text(
+                                                  
+                                                     'Branches',
+
+                                                     style: TextStyle(
+                                                    
+                                                       color: Colors.black,
+
+                                                       fontSize: 20.0,
+
+                                                       fontWeight: FontWeight.w900,
+
+                                                       ),
+
+                                                       ),
+
+                                                       ),
+
+                                                       SizedBox(
+                                                      
+                                                         height: 10,
+
+                                                       ),
+
+
+
+                                             ],
+
+                                           ),
+                                         ),
+                                       ),
+                                                                                   ),
+                                                     
+                                                                                                 ),
+                                                   );
+  
+                                                }
+  
+                                              },
             ),
      
-        actions: [
+        title:
             IconButton(
               iconSize: 60,
               icon: CircleAvatar(
               radius: 30,
-              backgroundColor: Colors.white70,
+              backgroundColor: Colors.grey.withOpacity(0),
               backgroundImage:  AssetImage('images/logo.png'),
             ),
               onPressed: () {
-                Navigator.pushNamed(context, HomePage.id);
+                Navigator.pushNamed(context, MainHomePage.id);
               },
             ),
-            // IconButton(
-            //   icon: CircleAvatar(
-            //     backgroundColor: Colors.orange,
-            //     radius: 15,
-            //     child: Icon(
-            //       Icons.phone,
-            //       color: Colors.white,
-            //       size: 30,
-            //     ),
-            //   ),
-            //   onPressed: () {
-            //     Navigator.pushNamed(context, Contact.id);
-            //   },
-            // ),
-            // SizedBox(
-            //     width: 15),
-            // IconButton(
-            //   icon: CircleAvatar(
-            //     backgroundColor: Colors.orange,
-            //     radius: 15,
-            //     child: Icon(
-            //       Icons.person,
-            //       size: 30,
-            //     ),
-            //   ),
-            //   onPressed: () {
-            //     Navigator.pushNamed(context, AboutUs.id);
-            //   },
-            // ),
-            // SizedBox(
-            //     width: 15),
-          ],
           ),
       ),
 body: SingleChildScrollView(
   child:   Container(  
     width: double.infinity,
-  
-    color: Colors.white70,
-  
+  decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  stops: [0.0, 0.5, 1.0],
+                  colors: [Colors.grey.withOpacity(0.7),Colors.grey.withOpacity(0.4) ,Colors.grey.withOpacity(0.1)],
+                ),
+        ),
     child: Column(
   
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -151,7 +325,7 @@ body: SingleChildScrollView(
   
                                               foregroundColor: Colors.grey[300],
   
-                                              backgroundColor: Colors.grey[300],
+                                              backgroundColor: Colors.black87,
   
                                               padding: const EdgeInsets.all(16.0),
   
@@ -182,34 +356,31 @@ body: SingleChildScrollView(
                                                 else
   
                                                 {
+                                                  setState(() {
   
-                                                  scaffoldKey.currentState?.showBottomSheet((context)=>
+                                                   isButtonPressed=true;
   
+                                                 });
+                                                  
+  
+                                                  scaffoldKey.currentState?.showBottomSheet(
+                                                    backgroundColor: Colors.grey,
+                                                    transitionAnimationController: AnimationController(
+                                                        vsync: Navigator.of(context),
+                                                        duration: Duration(milliseconds: 500),
+                                                      ),
+                                                    enableDrag: false,
+                                                    (context)=>
                                               Container(
   
                                                 width: double.infinity,
-  
-                                                color:Colors.red ,
+
   
                                                 child: Column(
   
                                                   mainAxisSize: MainAxisSize.min,
   
                                                   children: [
-  
-                                                    
-  
-                                                    IconButton(onPressed: () {
-  
-                                                      Navigator.pushNamed(context, MainHomePage.id);
-  
-                                                      setState(() {
-  
-                                                   isButtonPressed=true;
-  
-                                                 });
-  
-                                                    }, icon: Icon(Icons.close)),
   
     
   
@@ -369,7 +540,7 @@ body: SingleChildScrollView(
   
                                                 style: TextStyle(
   
-                                                  color: Colors.black,
+                                                  color: Colors.white,
   
                                                   fontSize: 20.0,
   
@@ -385,6 +556,58 @@ body: SingleChildScrollView(
   
           height: 250,
   
+        ),
+        Container(
+          color: Colors.blueGrey,
+          child: Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
+                children: [
+                  Container(
+                    child: Image(image: AssetImage('images/images (3).png')),
+                  ),
+                  Text('Our New Products and Offers are here \nHurry Up And Buy It Now \nLimited Time Offer',
+                  textAlign: TextAlign.center,
+                        style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                  ),)
+                ],
+              ),
+              Column(
+                children: [
+                  Text('News',
+                      style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 35,
+                            fontWeight: FontWeight.w500,
+                          ),),
+                ],
+              ),
+              Column(
+                children: [
+                  Container(
+                    
+                    child: Image(image: AssetImage('images/images (3).png')),
+                  ),
+                  Text('Our New Products and Offers are here \nHurry Up And Buy It Now \nLimited Time Offer',
+                  textAlign: TextAlign.center,
+                        style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                  ),)
+                ],
+              ),
+            ]),
+          ),
+        ),
+        SizedBox(
+          height: 50,
+
         ),
   
                                                            Padding(
@@ -407,7 +630,8 @@ body: SingleChildScrollView(
   
                                                                   ),
   
-                                                                  Image(image: AssetImage('images/images (1).png')),
+                                                                  Image(
+                                                                    image: AssetImage('images/GG.png')),
   
                                                                   SizedBox(
   
@@ -415,7 +639,7 @@ body: SingleChildScrollView(
   
                                                                   ),
   
-                                                                  Image(image: AssetImage('images/images (2).png')),
+                                                                  Image(image: AssetImage('images/GG1.png')),
   
                                                                   SizedBox(
   
@@ -423,7 +647,7 @@ body: SingleChildScrollView(
   
                                                                   ),
   
-                                                                  Image(image: AssetImage('images/images (3).png')),
+                                                                  Image(image: AssetImage('images/GG2.png')),
   
                                                                   SizedBox(
   
@@ -431,7 +655,7 @@ body: SingleChildScrollView(
   
                                                                   ),
   
-                                                                  Image(image: AssetImage('images/interior.png')),
+                                                                  Image(image: AssetImage('images/GG3.png')),
   
                                                                   SizedBox(
   
@@ -441,7 +665,7 @@ body: SingleChildScrollView(
   
                                                                   Image(image: AssetImage(
   
-                                                                    'images/download.png'
+                                                                    'images/interior.png'
   
                                                                     ),
   
@@ -461,7 +685,10 @@ body: SingleChildScrollView(
                                                              ),
   
                                                            ),
-  
+        
+        SizedBox(
+          height: 50,
+        ),
         Container(
           height: 200,
           color: Colors.black87,
@@ -523,302 +750,6 @@ body: SingleChildScrollView(
   
   ),
 ),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   );
               }
 }
-
-
-
-      // body: Container(
-      //   color: Colors.white70,
-      //   width: double.infinity,
-      //   height: double.infinity,
-        
-      //     child: Padding(
-      //       padding: const EdgeInsets.all(20.0),
-      //       child: ClipRRect(
-      //         borderRadius: BorderRadius.circular(20.0),
-      //         child: BackdropFilter(
-      //               filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-      //               child: Container(
-      //                 color: Colors.black.withOpacity(0.3),
-      //                 child: Row(
-      //                   children: [
-      //                       Expanded(
-      //                         child: Padding(
-      //                           padding: const EdgeInsets.all(50.0),
-      //                           child: CircleAvatar(
-      //                                                   radius: 200,
-      //                                                   backgroundImage:  AssetImage('images/icon.png'),
-                                                        
-      //                             ),
-      //                         ),
-      //                       ),
-      //       Expanded(
-      //         child: Padding(
-      //               padding: const EdgeInsets.symmetric(vertical: 10),
-      //               child: Container(
-      //                 width: 100,
-      //                 height: double.infinity,
-      //               decoration: BoxDecoration(
-      //               borderRadius: BorderRadius.circular(10),
-      //                 ),
-      //                 child: Column(
-      //                   crossAxisAlignment: CrossAxisAlignment.end,
-      //                   children: [
-      //                     SizedBox(
-      //                     height: 100,
-      //                     ),
-                          
-      //                     InkWell(
-      //         onTap: () {
-      //           Navigator.pushNamed(context, HomePage.id);
-      //         },
-      //         child: Padding(
-      //           padding: const EdgeInsets.all(10.0),
-      //           child: Container(
-      //             width: 175,
-      //             decoration: BoxDecoration(
-      //               borderRadius: BorderRadius.circular(10),
-      //               color: Colors.white.withOpacity(0.2),
-      //             ),
-      //             child: Row(
-      //               crossAxisAlignment: CrossAxisAlignment.start,
-      //               mainAxisAlignment: MainAxisAlignment.end,
-      //               children: [
-      //                 Column(
-      //                       crossAxisAlignment: CrossAxisAlignment.end,
-      //                       children: [
-      //                         // Text(
-      //                         //   'Products',
-      //                         //   style: TextStyle(
-      //                         //     fontSize: 25,
-      //                         //     fontWeight: FontWeight.w900,
-      //                         //     color: Colors.yellowAccent,
-      //                         //   ),
-      //                         // ),
-
-      //                       StrokeText(
-      //     text: 'Products',
-      //     textStyle: TextStyle(
-      //       fontSize: 25.0,
-      //       fontWeight: FontWeight.w900,
-      //       color: Colors.white,
-      //     ),
-      //     strokeColor: Colors.black,
-      //     strokeWidth: 3.0,
-      //   ),
-
-
-      //                       ],
-      //                 ),
-      //                 SizedBox(
-      //                       width: 30,
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //         ),
-      //                     ),
-      //                     SizedBox(
-      //                     height: 20,
-      //                     ),
-      //                     InkWell(
-      //         onTap: () {
-      //           Navigator.pushNamed(context, Contact.id);
-      //         },
-      //         child: Padding(
-      //           padding: const EdgeInsets.all(10.0),
-      //           child: Container(
-      //             width: 175,
-      //             decoration: BoxDecoration(
-      //               borderRadius: BorderRadius.circular(10),
-      //               color: Colors.orange.withOpacity(0.75),
-      //             ),
-      //             child: Row(
-      //               crossAxisAlignment: CrossAxisAlignment.start,
-      //               mainAxisAlignment: MainAxisAlignment.end,
-      //               children: [
-      //                 Column(
-      //                       crossAxisAlignment: CrossAxisAlignment.end,
-      //                       children: [
-
-      //                         StrokeText(
-      //     text: 'Contact Us',
-      //     textStyle: TextStyle(
-      //       fontSize: 25.0,
-      //       fontWeight: FontWeight.w900,
-      //       color: Colors.white,
-      //     ),
-      //     strokeColor: Colors.black,
-      //     strokeWidth: 3.0,
-      //   ),
-
-
-
-
-      //                         // Text(
-      //                         //   'Contact Us',
-      //                         //   style: TextStyle(
-      //                         //     fontSize: 25,
-      //                         //     fontWeight: FontWeight.w900,
-      //                         //     color: Colors.white,
-      //                         //   ),
-      //                         // ),
-      //                       ],
-      //                 ),
-      //                 SizedBox(
-      //                       width: 30,
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //         ),
-      //                     ),
-      //                     SizedBox(
-      //                     height: 20,
-      //                     ),
-
-      //                     InkWell(
-      //         onTap: () {
-      //           Navigator.pushNamed(context, AboutUs.id);
-      //         },
-      //         child: Padding(
-      //           padding: const EdgeInsets.all(10.0),
-      //           child: Container(
-      //             width: 175,
-      //             decoration: BoxDecoration(
-      //               borderRadius: BorderRadius.circular(10),
-      //               color: Colors.orange.withOpacity(0.75),
-      //             ),
-      //             child: Row(
-      //               crossAxisAlignment: CrossAxisAlignment.start,
-      //               mainAxisAlignment: MainAxisAlignment.end,
-      //               children: [
-      //                 Column(
-      //                       crossAxisAlignment: CrossAxisAlignment.end,
-      //                       children: [
-
-
-      //                         StrokeText(
-      //     text: 'About Us',
-      //     textStyle: TextStyle(
-      //       fontSize: 25.0,
-      //       fontWeight: FontWeight.w900,
-      //       color: Colors.white,
-      //     ),
-      //     strokeColor: Colors.black,
-      //     strokeWidth: 3.0,
-      //   ),
-
-
-
-      //                         // Text(
-      //                         //   'About Us',
-      //                         //   style: TextStyle(
-      //                         //     fontSize: 25,
-      //                         //     fontWeight: FontWeight.w900,
-      //                         //     color: Colors.white,
-      //                         //   ),
-      //                         // ),
-      //                       ],
-      //                 ),
-      //                 SizedBox(
-      //                       width: 30,
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //         ),
-      //                     ),
-
-      //                   SizedBox(
-      //                     height: 20,
-      //                     ),
-
-      //                     InkWell(
-      //         onTap: () {
-      //           Navigator.pushNamed(context, AboutUs.id);
-      //         },
-      //         child: Padding(
-      //           padding: const EdgeInsets.all(10.0),
-      //           child: Container(
-      //             width: 175,
-      //             decoration: BoxDecoration(
-      //               borderRadius: BorderRadius.circular(10),
-      //               color: Colors.orange.withOpacity(0.75),
-      //             ),
-      //             child: Row(
-      //               crossAxisAlignment: CrossAxisAlignment.start,
-      //               mainAxisAlignment: MainAxisAlignment.end,
-      //               children: [
-      //                 Column(
-      //                       crossAxisAlignment: CrossAxisAlignment.end,
-      //                       children: [
-
-
-      //                         StrokeText(
-      //     text: 'Branches',
-      //     textStyle: TextStyle(
-      //       fontSize: 25.0,
-      //       fontWeight: FontWeight.w900,
-      //       color: Colors.white,
-      //     ),
-      //     strokeColor: Colors.black,
-      //     strokeWidth: 3.0,
-      //   ),
-
-
-
-      //                         // Text(
-      //                         //   'Branches',
-      //                         //   style: TextStyle(
-      //                         //     fontSize: 25,
-      //                         //     fontWeight: FontWeight.w900,
-      //                         //     color: Colors.white,
-      //                         //   ),
-      //                         // ),
-      //                       ],
-      //                 ),
-      //                 SizedBox(
-      //                       width: 30,
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //         ),
-      //                     ),
-
-      //                   ],
-      //                 ),
-      //               ),
-      //             ),
-      //       ),
-      //                 ],
-      //               ),
-      //                           ),
-      //                           ),   
-      //                     ),
-      //                 ),
-      //                   ),
-              
