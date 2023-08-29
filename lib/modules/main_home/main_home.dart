@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:bs/modules/aboutus/aboutus_screen.dart';
 import 'package:bs/modules/contact/contact_screen.dart';
 import 'package:bs/modules/home/homepage.dart';
+import 'package:bs/modules/news_page.dart';
 import 'package:bs/shared/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -205,8 +206,8 @@ class _MainHomePageState extends State<MainHomePage> {
               ),
               Container(
                 width: double.infinity,
-                height: 500,
-                margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                height: 300,
+                margin: const EdgeInsets.only(left: 50.0, right: 50.0),
                 decoration: 
                 ShapeDecoration(shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
@@ -360,7 +361,7 @@ class _MainHomePageState extends State<MainHomePage> {
                 ),
               ),
               SizedBox(
-                height: 250,
+                height: 50,
               ),
               Container(
                 width: double.infinity,
@@ -395,32 +396,37 @@ class _MainHomePageState extends State<MainHomePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.blue.withOpacity(0.2),
-
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        child: Image(
-                                            image: AssetImage('images/images (3).png')),
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        'Our New Products and Offers are here \nHurry Up And Buy It Now \nLimited Time Offer',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.black,
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(context, NewsPage.id);
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.blue.withOpacity(0.2),
+                              
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: Image(
+                                              image: AssetImage('images/images (3).png')),
                                         ),
-                                      )
-                                    ],
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text(
+                                          'Our New Products and Offers are here \nHurry Up And Buy It Now \nLimited Time Offer',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.black,
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
