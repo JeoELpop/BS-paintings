@@ -34,6 +34,7 @@ dependencies:
   shared_preferences: ^2.1.2
   flutter_riverpod: ^1.0.0-dev.7
   cupertino_icons: ^1.0.5
+  lottie: ^2.3.2
 
 
   # The following adds the Cupertino Icons font to your application.
