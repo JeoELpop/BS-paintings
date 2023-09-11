@@ -23,16 +23,16 @@ class _MainHomePageState extends State<MainHomePage> {
   bool isButtonPressed = false;
 
   void openURL(String url) async {
-  if (await canLaunch(url)) {
-    await launch(url, forceSafariVC: false);
-  } else {
-    throw 'Could not launch $url';
+    if (await canLaunch(url)) {
+      await launch(url, forceSafariVC: false);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
-}
 
-   ScrollController _scrollController = ScrollController();
+  ScrollController _scrollController = ScrollController();
 
-void scrollToTop() {
+  void scrollToTop() {
     _scrollController.animateTo(
       0,
       duration: Duration(milliseconds: 500),
@@ -49,189 +49,187 @@ void scrollToTop() {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
-          backgroundColor:  Color(0xffcbbc9c),
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
+            backgroundColor: Color(0xffcbbc9c),
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  stops: [0.0, 0.5, 1.0],
+                  colors: [
+                    Color(0xffb9a57a),
+                    Color(0xffcbbc9c),
+                    Color(0xffdcd2bd),
+                  ],
+                ),
               ),
-              gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                stops: [0.0, 0.5, 1.0],
-                colors: [ 
-                Color(0xffb9a57a),
-                Color(0xffcbbc9c),
-                Color(0xffdcd2bd),
+            ),
+            centerTitle: true,
+            elevation: 0.5,
+            leading: IconButton(
+              icon: CircleAvatar(
+                backgroundColor: Colors.grey.withOpacity(0),
+                radius: 15,
+                child: Icon(
+                  Icons.menu,
+                  color: Colors.black,
+                  size: 30,
+                ),
+              ),
+              onPressed: () {
+                if (isButtonPressed) {
+                  Navigator.pop(context);
 
-                ],
-              ),
-            ),
-          ),
-          centerTitle: true,
-          elevation: 0.5,
-          leading: IconButton(
-            icon: CircleAvatar(
-              backgroundColor: Colors.grey.withOpacity(0),
-              radius: 15,
-              child: Icon(
-                Icons.menu,
-                color: Colors.black,
-                size: 30,
-              ),
-            ),
-            onPressed: () {
-              if (isButtonPressed) {
-                Navigator.pop(context);
-        
-                setState(() {
-                  isButtonPressed = false;
-                });
-              } else {
-                setState(() {
-                  isButtonPressed = true;
-                });
-        
-                scaffoldKey.currentState?.showBottomSheet(
-                  backgroundColor: Colors.black.withOpacity(0.3),
-                  transitionAnimationController: AnimationController(
-                    vsync: Navigator.of(context),
-                    duration: Duration(milliseconds: 500),
-                  ),
-                  constraints: BoxConstraints(
-                    maxHeight: double.infinity,
-                    minHeight: 100,
-                  ),
-                  enableDrag: false,
-                  (context) => Container(
-                    alignment: Alignment.topLeft,
-                    color: Colors.brown.withOpacity(0),
-                    child: Container(
-                      height: double.infinity,
-                      color: Colors.brown.withOpacity(0.1),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, HomePage.id);
-                                },
-                                child: Text(
-                                  'Home',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w900,
+                  setState(() {
+                    isButtonPressed = false;
+                  });
+                } else {
+                  setState(() {
+                    isButtonPressed = true;
+                  });
+
+                  scaffoldKey.currentState?.showBottomSheet(
+                    backgroundColor: Colors.black.withOpacity(0.3),
+                    transitionAnimationController: AnimationController(
+                      vsync: Navigator.of(context),
+                      duration: Duration(milliseconds: 500),
+                    ),
+                    constraints: BoxConstraints(
+                      maxHeight: double.infinity,
+                      minHeight: 100,
+                    ),
+                    enableDrag: false,
+                    (context) => Container(
+                      alignment: Alignment.topLeft,
+                      color: Colors.brown.withOpacity(0),
+                      child: Container(
+                        height: double.infinity,
+                        color: Colors.brown.withOpacity(0.1),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, HomePage.id);
+                                  },
+                                  child: Text(
+                                    'Home',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w900,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, AboutUs.id);
-                                },
-                                child: Text(
-                                  'About Us',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w900,
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, AboutUs.id);
+                                  },
+                                  child: Text(
+                                    'About Us',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w900,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, Contact.id);
-                                },
-                                child: Text(
-                                  'Contact Us',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w900,
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, Contact.id);
+                                  },
+                                  child: Text(
+                                    'Contact Us',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w900,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                               TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, Contact.id);
-                                },
-                                child: Text(
-                                  'Catalouges',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w900,
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, Contact.id);
+                                  },
+                                  child: Text(
+                                    'Catalouges',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w900,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, Contact.id);
-                                },
-                                child: Text(
-                                  'Branches',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w900,
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, Contact.id);
+                                  },
+                                  child: Text(
+                                    'Branches',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w900,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                            ],
+                                SizedBox(
+                                  height: 10,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                );
-              }
-            },
-          ),
-          actions:[
-           IconButton(
-            iconSize: 60,
-            icon: CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.grey.withOpacity(0),
-              child: Icon (Icons.phone),
+                  );
+                }
+              },
             ),
-            onPressed: () {
-              openURL('https://wa.me/+201063843981?text=Hello');
-              // openURL('https://www.youtube.com/');
-            },
-          ),
-          IconButton(
-            iconSize: 60,
-            icon: CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.grey.withOpacity(0),
-              backgroundImage: AssetImage('images/logo.png'),
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, MainHomePage.id);
-            },
-          ),
-          ] 
-        ),
+            actions: [
+              IconButton(
+                iconSize: 60,
+                icon: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.grey.withOpacity(0),
+                  child: Icon(Icons.phone),
+                ),
+                onPressed: () {
+                  openURL('https://wa.me/+201063843981?text=Hello');
+                  // openURL('https://www.youtube.com/');
+                },
+              ),
+              IconButton(
+                iconSize: 60,
+                icon: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.grey.withOpacity(0),
+                  backgroundImage: AssetImage('images/logo.png'),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, MainHomePage.id);
+                },
+              ),
+            ]),
       ),
       body: SingleChildScrollView(
         controller: _scrollController,
@@ -263,11 +261,11 @@ void scrollToTop() {
                 width: double.infinity,
                 height: 300,
                 margin: const EdgeInsets.only(left: 50.0, right: 50.0),
-                decoration: 
-                ShapeDecoration(shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                                color: Colors.black.withOpacity(0.2),
-                                ),
+                decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  color: Colors.black.withOpacity(0.2),
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -294,7 +292,7 @@ void scrollToTop() {
                           onPressed: () {
                             if (isButtonPressed) {
                               Navigator.pop(context);
-              
+
                               setState(() {
                                 isButtonPressed = false;
                               });
@@ -302,7 +300,7 @@ void scrollToTop() {
                               setState(() {
                                 isButtonPressed = true;
                               });
-              
+
                               scaffoldKey.currentState?.showBottomSheet(
                                 backgroundColor: Colors.grey,
                                 transitionAnimationController:
@@ -393,7 +391,7 @@ void scrollToTop() {
                               );
                             }
                           },
-                          child:  Text(
+                          child: Text(
                             'Get Started',
                             style: TextStyle(
                               color: Colors.grey.shade300,
@@ -422,30 +420,30 @@ void scrollToTop() {
               Container(
                 width: double.infinity,
                 margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                decoration: 
-                ShapeDecoration(shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                                color: Color(0xffb19a6a).withOpacity(0.9),
-                                ),
+                decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  color: Color(0xffb19a6a).withOpacity(0.9),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
                     children: [
-                     Column(
-                              children: [
-                                Text(
-                                  'News',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                              ],
+                      Column(
+                        children: [
+                          Text(
+                            'News',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 35,
+                              fontWeight: FontWeight.w900,
                             ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                        ],
+                      ),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
@@ -460,7 +458,6 @@ void scrollToTop() {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: Colors.blue.withOpacity(0.2),
-                              
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(10.0),
@@ -468,7 +465,8 @@ void scrollToTop() {
                                       children: [
                                         Container(
                                           child: Image(
-                                              image: AssetImage('images/images (3).png')),
+                                              image: AssetImage(
+                                                  'images/images (3).png')),
                                         ),
                                         SizedBox(
                                           height: 10,
@@ -493,7 +491,6 @@ void scrollToTop() {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: Colors.blue.withOpacity(0.2),
-
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(10.0),
@@ -501,38 +498,8 @@ void scrollToTop() {
                                     children: [
                                       Container(
                                         child: Image(
-                                            image: AssetImage('images/images (3).png')),
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        'Our New Products and Offers are here \nHurry Up And Buy It Now \nLimited Time Offer',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.black,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.blue.withOpacity(0.2),
-
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        child: Image(
-                                            image: AssetImage('images/images (3).png')),
+                                            image: AssetImage(
+                                                'images/images (3).png')),
                                       ),
                                       SizedBox(
                                         height: 10,
@@ -556,7 +523,6 @@ void scrollToTop() {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: Colors.blue.withOpacity(0.2),
-
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(10.0),
@@ -564,7 +530,8 @@ void scrollToTop() {
                                     children: [
                                       Container(
                                         child: Image(
-                                            image: AssetImage('images/images (3).png')),
+                                            image: AssetImage(
+                                                'images/images (3).png')),
                                       ),
                                       SizedBox(
                                         height: 10,
@@ -588,7 +555,6 @@ void scrollToTop() {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: Colors.blue.withOpacity(0.2),
-
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(10.0),
@@ -596,7 +562,8 @@ void scrollToTop() {
                                     children: [
                                       Container(
                                         child: Image(
-                                            image: AssetImage('images/images (3).png')),
+                                            image: AssetImage(
+                                                'images/images (3).png')),
                                       ),
                                       SizedBox(
                                         height: 10,
@@ -620,7 +587,6 @@ void scrollToTop() {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: Colors.blue.withOpacity(0.2),
-
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(10.0),
@@ -628,7 +594,8 @@ void scrollToTop() {
                                     children: [
                                       Container(
                                         child: Image(
-                                            image: AssetImage('images/images (3).png')),
+                                            image: AssetImage(
+                                                'images/images (3).png')),
                                       ),
                                       SizedBox(
                                         height: 10,
@@ -652,7 +619,6 @@ void scrollToTop() {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: Colors.blue.withOpacity(0.2),
-
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(10.0),
@@ -660,7 +626,8 @@ void scrollToTop() {
                                     children: [
                                       Container(
                                         child: Image(
-                                            image: AssetImage('images/images (3).png')),
+                                            image: AssetImage(
+                                                'images/images (3).png')),
                                       ),
                                       SizedBox(
                                         height: 10,
@@ -680,7 +647,38 @@ void scrollToTop() {
                               SizedBox(
                                 width: 20,
                               ),
-                              
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.blue.withOpacity(0.2),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        child: Image(
+                                            image: AssetImage(
+                                                'images/images (3).png')),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        'Our New Products and Offers are here \nHurry Up And Buy It Now \nLimited Time Offer',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.black,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
                             ]),
                       ),
                     ],
@@ -766,11 +764,13 @@ void scrollToTop() {
                             SizedBox(
                               height: 120,
                             ),
-                            Text('All rights reserved to BS™ inc. 2023',
-                            style: TextStyle(
+                            Text(
+                              'All rights reserved to BS™ inc. 2023',
+                              style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,
-                              ),),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -797,17 +797,13 @@ void scrollToTop() {
           ),
         ),
       ),
-    floatingActionButton:FloatingActionButton(
-  backgroundColor:  Color(0xffcbbc9c),
-  child: Icon(
-    Icons.arrow_upward_outlined
-    ),
-  onPressed: () 
-  {
-   scrollToTop();
-  },) ,
-
-
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xffcbbc9c),
+        child: Icon(Icons.arrow_upward_outlined),
+        onPressed: () {
+          scrollToTop();
+        },
+      ),
     );
   }
 }

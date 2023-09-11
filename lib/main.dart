@@ -7,19 +7,20 @@ import 'package:bs/modules/news_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
-class MyHttpOverrides extends HttpOverrides{
+class MyHttpOverrides extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext? context){
+  HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
-    ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
- runApp(ProviderScope(child: MyApp()));
+  runApp(ProviderScope(child: MyApp()));
 }
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -28,15 +29,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'B.S',
       home: MainHomePage(),
-  routes: {
-    MainHomePage.id : (context) => MainHomePage(),
-    HomePage.id : (context) => HomePage(title: 'B.S For Paitnings',),
-    AboutUs.id : (context) => AboutUs(),
-    Contact.id : (context) => Contact(),
-    NewsPage.id : (context) => NewsPage(),  
-  },
-          );
+      routes: {
+        MainHomePage.id: (context) => MainHomePage(),
+        HomePage.id: (context) => HomePage(
+              title: 'B.S For Paitnings',
+            ),
+        AboutUs.id: (context) => AboutUs(),
+        Contact.id: (context) => Contact(),
+        NewsPage.id: (context) => NewsPage(),
+      },
+    );
   }
 }
-
-  

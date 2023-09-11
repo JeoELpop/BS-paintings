@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-class PaintModel
-{
+class PaintModel {
   final int id;
   final String name;
   final double prices;
@@ -12,13 +11,7 @@ class PaintModel
     required this.prices,
     required this.Describtion,
   });
-
 }
-
-
-
-
-
 
 class StrokeText extends StatelessWidget {
   final String text;
