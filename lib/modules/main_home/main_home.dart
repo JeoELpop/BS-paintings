@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:lottie/lottie.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MainHomePage extends StatefulWidget {
   const MainHomePage({super.key});
@@ -21,6 +22,24 @@ class MainHomePage extends StatefulWidget {
 class _MainHomePageState extends State<MainHomePage> {
   bool isButtonPressed = false;
 
+  void openURL(String url) async {
+  if (await canLaunch(url)) {
+    await launch(url, forceSafariVC: false);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+   ScrollController _scrollController = ScrollController();
+
+void scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -30,7 +49,7 @@ class _MainHomePageState extends State<MainHomePage> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
-          backgroundColor: Colors.grey.withOpacity(0),
+          backgroundColor:  Color(0xffcbbc9c),
           flexibleSpace: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -41,10 +60,11 @@ class _MainHomePageState extends State<MainHomePage> {
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
                 stops: [0.0, 0.5, 1.0],
-                colors: [
-                  Colors.grey.withOpacity(0.7),
-                  Colors.grey.withOpacity(0.4),
-                  Colors.grey.withOpacity(0.1)
+                colors: [ 
+                Color(0xffb9a57a),
+                Color(0xffcbbc9c),
+                Color(0xffdcd2bd),
+
                 ],
               ),
             ),
@@ -74,7 +94,7 @@ class _MainHomePageState extends State<MainHomePage> {
                 });
         
                 scaffoldKey.currentState?.showBottomSheet(
-                  backgroundColor: Colors.grey.withOpacity(0.3),
+                  backgroundColor: Colors.black.withOpacity(0.3),
                   transitionAnimationController: AnimationController(
                     vsync: Navigator.of(context),
                     duration: Duration(milliseconds: 500),
@@ -86,10 +106,10 @@ class _MainHomePageState extends State<MainHomePage> {
                   enableDrag: false,
                   (context) => Container(
                     alignment: Alignment.topLeft,
-                    color: Colors.grey.withOpacity(0),
+                    color: Colors.brown.withOpacity(0),
                     child: Container(
                       height: double.infinity,
-                      color: Colors.grey.withOpacity(0.2),
+                      color: Colors.brown.withOpacity(0.1),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -144,6 +164,22 @@ class _MainHomePageState extends State<MainHomePage> {
                               SizedBox(
                                 height: 10,
                               ),
+                               TextButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(context, Contact.id);
+                                },
+                                child: Text(
+                                  'Catalouges',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
                               TextButton(
                                 onPressed: () {
                                   Navigator.pushNamed(context, Contact.id);
@@ -170,7 +206,20 @@ class _MainHomePageState extends State<MainHomePage> {
               }
             },
           ),
-          title: IconButton(
+          actions:[
+           IconButton(
+            iconSize: 60,
+            icon: CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.grey.withOpacity(0),
+              child: Icon (Icons.phone),
+            ),
+            onPressed: () {
+              openURL('https://wa.me/+201063843981?text=Hello');
+              // openURL('https://www.youtube.com/');
+            },
+          ),
+          IconButton(
             iconSize: 60,
             icon: CircleAvatar(
               radius: 30,
@@ -181,9 +230,11 @@ class _MainHomePageState extends State<MainHomePage> {
               Navigator.pushNamed(context, MainHomePage.id);
             },
           ),
+          ] 
         ),
       ),
       body: SingleChildScrollView(
+        controller: _scrollController,
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
@@ -192,9 +243,13 @@ class _MainHomePageState extends State<MainHomePage> {
               end: Alignment.centerRight,
               stops: [0.0, 0.5, 1.0],
               colors: [
-                Colors.grey.withOpacity(0.7),
-                Colors.grey.withOpacity(0.4),
-                Colors.grey.withOpacity(0.1)
+                Color(0xffb9a57a),
+                Color(0xffcbbc9c),
+                Color(0xffdcd2bd),
+
+                // Colors.grey.withOpacity(0.7),
+                // Colors.grey.withOpacity(0.4),
+                // Colors.grey.withOpacity(0.1)
               ],
             ),
           ),
@@ -351,7 +406,8 @@ class _MainHomePageState extends State<MainHomePage> {
                     ),
                     Container(
                       child: Lottie.network(
-                        "https://lottie.host/635051c8-26bc-499a-8fc7-cbf20a72888c/UYgFlQmlHc.json",
+                        "https://lottie.host/d37c66c0-4b71-41c5-98cc-88ff66809289/dcUYBJK1yN.json",
+                        fit: BoxFit.fill,
                         animate: true,
                         height: 250,
                         width: 250,
@@ -369,7 +425,7 @@ class _MainHomePageState extends State<MainHomePage> {
                 decoration: 
                 ShapeDecoration(shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
-                                color: Colors.blueGrey,
+                                color: Color(0xffb19a6a).withOpacity(0.9),
                                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
@@ -741,6 +797,17 @@ class _MainHomePageState extends State<MainHomePage> {
           ),
         ),
       ),
+    floatingActionButton:FloatingActionButton(
+  backgroundColor:  Color(0xffcbbc9c),
+  child: Icon(
+    Icons.arrow_upward_outlined
+    ),
+  onPressed: () 
+  {
+   scrollToTop();
+  },) ,
+
+
     );
   }
 }
