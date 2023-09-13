@@ -49,7 +49,7 @@ class _MainHomePageState extends State<MainHomePage> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
-            backgroundColor: Color(0xffcbbc9c),
+            backgroundColor: Colors.grey.withOpacity(0.4),
             flexibleSpace: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -61,9 +61,12 @@ class _MainHomePageState extends State<MainHomePage> {
                   end: Alignment.centerRight,
                   stops: [0.0, 0.5, 1.0],
                   colors: [
-                    Color(0xffb9a57a),
-                    Color(0xffcbbc9c),
-                    Color(0xffdcd2bd),
+                    // Color(0xffb9a57a),
+                    // Color(0xffcbbc9c),
+                    // Color(0xffdcd2bd),
+                    Colors.grey.withOpacity(0.7),
+                Colors.grey.withOpacity(0.4),
+                Colors.grey.withOpacity(0.1)
                   ],
                 ),
               ),
@@ -105,90 +108,155 @@ class _MainHomePageState extends State<MainHomePage> {
                     enableDrag: false,
                     (context) => Container(
                       alignment: Alignment.topLeft,
-                      color: Colors.brown.withOpacity(0),
+                      color: Colors.white.withOpacity(0),
                       child: Container(
                         height: double.infinity,
-                        color: Colors.brown.withOpacity(0.1),
+                        color: Colors.white.withOpacity(0.1),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pushNamed(context, HomePage.id);
-                                  },
-                                  child: Text(
-                                    'Home',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w900,
+                                Container(
+                                  width: 145,
+                                  alignment: Alignment.centerLeft,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, HomePage.id);
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.arrow_right_rounded,
+                                  color: Colors.black,),
+                                        Text(
+                                          'Home',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
                                 SizedBox(
                                   height: 10,
                                 ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pushNamed(context, AboutUs.id);
-                                  },
-                                  child: Text(
-                                    'About Us',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w900,
+                               Container(
+                                  width: 145,
+                                  alignment: Alignment.centerLeft,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: TextButton(
+                                    onPressed: () {
+                                     Navigator.pushNamed(context, AboutUs.id);
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.arrow_right_rounded,
+                                  color: Colors.black,),
+                                        Text(
+                                          'About Us',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
                                 SizedBox(
                                   height: 10,
                                 ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pushNamed(context, Contact.id);
-                                  },
-                                  child: Text(
-                                    'Contact Us',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w900,
+                              Container(
+                                  width: 145,
+                                  alignment: Alignment.centerLeft,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: TextButton(
+                                    onPressed: () {
+                                     Navigator.pushNamed(context, Contact.id);
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.arrow_right_rounded,
+                                  color: Colors.black,),
+                                        Text(
+                                          'Contact Us',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
                                 SizedBox(
                                   height: 10,
                                 ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pushNamed(context, Contact.id);
-                                  },
-                                  child: Text(
-                                    'Catalouges',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w900,
+                                Container(
+                                  width: 145,
+                                  alignment: Alignment.centerLeft,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: TextButton(
+                                    onPressed: () {
+                                     Navigator.pushNamed(context, Contact.id);
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.arrow_right_rounded,
+                                  color: Colors.black,),
+                                        Text(
+                                          'Catalouges',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
                                 SizedBox(
                                   height: 10,
                                 ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pushNamed(context, Contact.id);
-                                  },
-                                  child: Text(
-                                    'Branches',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w900,
+                                Container(
+                                  width: 145,
+                                  alignment: Alignment.centerLeft,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: TextButton(
+                                    onPressed: () {
+                                     Navigator.pushNamed(context, Contact.id);
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.arrow_right_rounded,
+                                  color: Colors.black,),
+                                        Text(
+                                          'Branches',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -241,13 +309,13 @@ class _MainHomePageState extends State<MainHomePage> {
               end: Alignment.centerRight,
               stops: [0.0, 0.5, 1.0],
               colors: [
-                Color(0xffb9a57a),
-                Color(0xffcbbc9c),
-                Color(0xffdcd2bd),
+                // Color(0xffb9a57a),
+                // Color(0xffcbbc9c),
+                // Color(0xffdcd2bd),
 
-                // Colors.grey.withOpacity(0.7),
-                // Colors.grey.withOpacity(0.4),
-                // Colors.grey.withOpacity(0.1)
+                Colors.grey.withOpacity(0.7),
+                Colors.grey.withOpacity(0.4),
+                Colors.grey.withOpacity(0.1)
               ],
             ),
           ),
@@ -404,7 +472,8 @@ class _MainHomePageState extends State<MainHomePage> {
                     ),
                     Container(
                       child: Lottie.network(
-                        "https://lottie.host/d37c66c0-4b71-41c5-98cc-88ff66809289/dcUYBJK1yN.json",
+                        // "https://lottie.host/d37c66c0-4b71-41c5-98cc-88ff66809289/dcUYBJK1yN.json",
+                        "https://lottie.host/f55e7660-bbeb-4f0a-af43-514d19d6bf08/yxwkwLyLlI.json",
                         fit: BoxFit.fill,
                         animate: true,
                         height: 250,
@@ -423,7 +492,7 @@ class _MainHomePageState extends State<MainHomePage> {
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
-                  color: Color(0xffb19a6a).withOpacity(0.9),
+                  color: Colors.blueGrey.withOpacity(0.9),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
@@ -798,8 +867,10 @@ class _MainHomePageState extends State<MainHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xffcbbc9c),
-        child: Icon(Icons.arrow_upward_outlined),
+        backgroundColor: Colors.white.withOpacity(0.7),
+        child: Icon(Icons.arrow_upward_outlined,
+        color:  Colors.black,   
+        ),
         onPressed: () {
           scrollToTop();
         },
