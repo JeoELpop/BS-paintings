@@ -41,7 +41,6 @@ class _MainHomePageState extends State<MainHomePage> {
   }
 
   var scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

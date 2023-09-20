@@ -1,16 +1,31 @@
 import 'dart:ui';
 import 'package:bs/modules/aboutus/aboutus_screen.dart';
 import 'package:bs/modules/contact/contact_screen.dart';
+import 'package:bs/modules/main_home/main_home.dart';
 import 'package:bs/shared/components.dart';
 import 'package:bs/shared/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key, required this.title});
 
   final String title;
+  
+
+
+void openURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceSafariVC: false);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+ var scaffoldKey = GlobalKey<ScaffoldState>();
+
 
   static String id = 'HomePage';
 
@@ -77,72 +92,249 @@ List<PaintModel> paints = [
   ),
 ];
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+  bool isButtonPressed = false;
+
+  void openURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceSafariVC: false);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       key: scaffoldKey,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40.0),
+        preferredSize: Size.fromHeight(50.0),
         child: AppBar(
-          centerTitle: true,
-          elevation: 0,
-          title: Text('B.S For Paitnings',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w900,
-                color: Colors.white,
-              )),
-          // title: CircleAvatar(
-          //   radius: 27,
-          //   backgroundImage:  AssetImage('images/icon.png'),
+            backgroundColor: Colors.grey.withOpacity(0.4),
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  stops: [0.0, 0.5, 1.0],
+                  colors: [
+                    // Color(0xffb9a57a),
+                    // Color(0xffcbbc9c),
+                    // Color(0xffdcd2bd),
+                    Colors.grey.withOpacity(0.7),
+                Colors.grey.withOpacity(0.4),
+                Colors.grey.withOpacity(0.1)
+                  ],
+                ),
+              ),
+            ),
+            centerTitle: true,
+            elevation: 0.5,
+            leading: IconButton(
+              icon: CircleAvatar(
+                backgroundColor: Colors.grey.withOpacity(0),
+                radius: 15,
+                child: Icon(
+                  Icons.menu,
+                  color: Colors.black,
+                  size: 30,
+                ),
+              ),
+              onPressed: () {
+                if (isButtonPressed) {
+                  Navigator.pop(context);
 
-          // ),
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                stops: [0.0, 0.5, 1.0],
-                colors: [
-                  Color.fromARGB(255, 84, 188, 236),
-                  Colors.red,
-                  Colors.orange
-                ],
-              ),
-            ),
-          ),
-          actions: [
-            IconButton(
-              icon: CircleAvatar(
-                backgroundColor: Colors.orange,
-                radius: 15,
-                child: Icon(
-                  Icons.phone,
-                  color: Colors.white,
-                  size: 30,
-                ),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, Contact.id);
+                  setState(() {
+                    isButtonPressed = false;
+                  });
+                } else {
+                  setState(() {
+                    isButtonPressed = true;
+                  });
+
+                  scaffoldKey.currentState?.showBottomSheet(
+                    backgroundColor: Colors.black.withOpacity(0.3),
+                    transitionAnimationController: AnimationController(
+                      vsync: Navigator.of(context),
+                      duration: Duration(milliseconds: 500),
+                    ),
+                    constraints: BoxConstraints(
+                      maxHeight: double.infinity,
+                      minHeight: 100,
+                    ),
+                    enableDrag: false,
+                    (context) => Container(
+                      alignment: Alignment.topLeft,
+                      color: Colors.white.withOpacity(0),
+                      child: Container(
+                        height: double.infinity,
+                        color: Colors.white.withOpacity(0.1),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  width: 145,
+                                  alignment: Alignment.centerLeft,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, HomePage.id);
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.arrow_right_rounded,
+                                  color: Colors.black,),
+                                        Text(
+                                          'Home',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                              Container(
+                                  width: 145,
+                                  alignment: Alignment.centerLeft,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: TextButton(
+                                    onPressed: () {
+                                     Navigator.pushNamed(context, Contact.id);
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.arrow_right_rounded,
+                                  color: Colors.black,),
+                                        Text(
+                                          'Contact Us',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  width: 145,
+                                  alignment: Alignment.centerLeft,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: TextButton(
+                                    onPressed: () {
+                                     Navigator.pushNamed(context, Contact.id);
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.arrow_right_rounded,
+                                  color: Colors.black,),
+                                        Text(
+                                          'Catalouges',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  width: 145,
+                                  alignment: Alignment.centerLeft,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: TextButton(
+                                    onPressed: () {
+                                     Navigator.pushNamed(context, Contact.id);
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.arrow_right_rounded,
+                                  color: Colors.black,),
+                                        Text(
+                                          'Branches',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }
               },
             ),
-            SizedBox(width: 15),
-            IconButton(
-              icon: CircleAvatar(
-                backgroundColor: Colors.orange,
-                radius: 15,
-                child: Icon(
-                  Icons.person,
-                  size: 30,
+            actions: [
+              IconButton(
+                iconSize: 60,
+                icon: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.grey.withOpacity(0),
+                  child: Icon(Icons.phone),
                 ),
+                onPressed: () {
+                  openURL('https://wa.me/+201063843981?text=Hello');
+                  // openURL('https://www.youtube.com/');
+                },
               ),
-              onPressed: () {
-                Navigator.pushNamed(context, AboutUs.id);
-              },
-            ),
-            SizedBox(width: 15),
-          ],
-        ),
+              IconButton(
+                iconSize: 60,
+                icon: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.grey.withOpacity(0),
+                  backgroundImage: AssetImage('images/logo.png'),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, MainHomePage.id);
+                },
+              ),
+            ]),
       ),
       body: Container(
         width: double.infinity,

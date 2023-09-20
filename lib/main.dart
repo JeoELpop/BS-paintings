@@ -6,6 +6,7 @@ import 'package:bs/modules/main_home/main_home.dart';
 import 'package:bs/modules/news_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'modules/social_media/social_media_page.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         AboutUs.id: (context) => AboutUs(),
         Contact.id: (context) => Contact(),
         NewsPage.id: (context) => NewsPage(),
+        SocialMediaPage.id: (context) => SocialMediaPage(),
       },
     );
   }
