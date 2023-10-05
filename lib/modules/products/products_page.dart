@@ -1,25 +1,25 @@
 import 'package:bs/shared/constant.dart';
 import 'package:flutter/material.dart';
 
-class MainHomePage extends StatelessWidget {
+class Products extends StatelessWidget {
 
-  static String id = 'MainHomePage';
+  static String id = 'Products';
   
-  final Widget MobileMainHomePage;
-  final Widget DesktopMainHomePage;
+  final Widget MobileProducts;
+  final Widget DesktopProducts;
 
-  MainHomePage({
-    required this.MobileMainHomePage,
-    required this.DesktopMainHomePage,
+  Products({
+    required this.MobileProducts,
+    required this.DesktopProducts,
   });
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
             if (constraints.maxWidth < mobileWidth) {
-            return MobileMainHomePage;
+            return MobileProducts;
             } else {
-              return DesktopMainHomePage;
+              return DesktopProducts;
             }
       }
           );

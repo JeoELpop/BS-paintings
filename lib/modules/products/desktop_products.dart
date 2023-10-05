@@ -1,21 +1,20 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:ui';
 import 'package:bs/modules/contact/contact_screen.dart';
-import 'package:bs/modules/products/products_page.dart';
 import 'package:bs/modules/main_home/main_home.dart';
+import 'package:bs/shared/components.dart';
+import 'package:bs/shared/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class AboutUs extends StatefulWidget {
+class DesktopProducts extends StatefulWidget {
+  DesktopProducts({super.key, required this.title});
 
-  static String id = 'AboutUs';
+  final String title;
+  
 
-  @override
-  State<AboutUs> createState() => _AboutUsState();
-}
-
-class _AboutUsState extends State<AboutUs> {
-    bool isButtonPressed = false;
 
 void openURL(String url) async {
     if (await canLaunch(url)) {
@@ -25,12 +24,91 @@ void openURL(String url) async {
     }
   }
 
-  var scaffoldKey = GlobalKey<ScaffoldState>();
+ var scaffoldKey = GlobalKey<ScaffoldState>();
 
+
+  static String id = 'DesktopProducts';
+
+  @override
+  State<DesktopProducts> createState() => _DesktopProductsState();
+}
+
+List<PaintModel> paints = [
+  PaintModel(
+    id: 1,
+    name: 'Sija(سيجا)',
+    prices: 85.0,
+    Describtion:
+        'منتج دهانات عالي الجودة والذي يتميز بالمتانة والمقاومة للعوامل الخارجية مثل الرطوبة \n والحرارة والأشعة فوق البنفسجية\n كما يتميز بسهولة التطبيق والتغطية العالية للأسطح المختلفة',
+  ),
+  PaintModel(
+    id: 2,
+    name: 'Sija Plus(سيجا بلس)',
+    prices: 85.0,
+    Describtion:
+        'منتج دهانات عالي الجودة والذي يتميز بالمتانة والمقاومة للعوامل الخارجية مثل الرطوبة \n والحرارة والأشعة فوق البنفسجية\n كما يتميز بسهولة التطبيق والتغطية العالية للأسطح المختلفة',
+  ),
+  PaintModel(
+    id: 3,
+    name: 'Sija Smoke(سيجا دخان)',
+    prices: 85.0,
+    Describtion:
+        'منتج دهانات عالي الجودة والذي يتميز بالمتانة والمقاومة للعوامل الخارجية مثل الرطوبة \n والحرارة والأشعة فوق البنفسجية\n كما يتميز بسهولة التطبيق والتغطية العالية للأسطح المختلفة',
+  ),
+  PaintModel(
+    id: 4,
+    name: 'Metallic(ميتاليك)',
+    prices: 85.0,
+    Describtion:
+        'منتج دهانات عالي الجودة والذي يتميز بالمتانة والمقاومة للعوامل الخارجية مثل الرطوبة \n والحرارة والأشعة فوق البنفسجية\n كما يتميز بسهولة التطبيق والتغطية العالية للأسطح المختلفة',
+  ),
+  PaintModel(
+    id: 5,
+    name: 'Stucco(ستوكو)',
+    prices: 85.0,
+    Describtion:
+        'منتج دهانات عالي الجودة والذي يتميز بالمتانة والمقاومة للعوامل الخارجية مثل الرطوبة \n والحرارة والأشعة فوق البنفسجية\n كما يتميز بسهولة التطبيق والتغطية العالية للأسطح المختلفة',
+  ),
+  PaintModel(
+    id: 6,
+    name: 'Soli(سواحيلي)',
+    prices: 85.0,
+    Describtion:
+        'منتج دهانات عالي الجودة والذي يتميز بالمتانة والمقاومة للعوامل الخارجية مثل الرطوبة \n والحرارة والأشعة فوق البنفسجية\n كما يتميز بسهولة التطبيق والتغطية العالية للأسطح المختلفة',
+  ),
+  PaintModel(
+    id: 7,
+    name: 'Reflisi(ريفليزي)',
+    prices: 85.0,
+    Describtion:
+        'منتج دهانات عالي الجودة والذي يتميز بالمتانة والمقاومة للعوامل الخارجية مثل الرطوبة \n والحرارة والأشعة فوق البنفسجية\n كما يتميز بسهولة التطبيق والتغطية العالية للأسطح المختلفة',
+  ),
+  PaintModel(
+    id: 8,
+    name: 'Flower(فلاور)',
+    prices: 85.0,
+    Describtion:
+        'منتج دهانات عالي الجودة والذي يتميز بالمتانة والمقاومة للعوامل الخارجية مثل الرطوبة \n والحرارة والأشعة فوق البنفسجية\n كما يتميز بسهولة التطبيق والتغطية العالية للأسطح المختلفة',
+  ),
+];
+
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+  bool isButtonPressed = false;
+
+  void openURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceSafariVC: false);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+
+class _DesktopProductsState extends State<DesktopProducts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
+       key: scaffoldKey,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
@@ -111,7 +189,7 @@ void openURL(String url) async {
                                   ),
                                   child: TextButton(
                                     onPressed: () {
-                                      Navigator.pushNamed(context, Products.id);
+                                      Navigator.pushNamed(context, MainHomePage.id);
                                     },
                                     child: Row(
                                       children: [
@@ -259,162 +337,148 @@ void openURL(String url) async {
             ]),
       ),
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('images/back.png'),
-            fit: BoxFit.cover,
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [0.0, 0.5, 1.0],
+            colors: [
+              Color.fromARGB(255, 84, 188, 236),
+              Colors.red,
+              Colors.orange
+            ],
           ),
+          // image: DecorationImage(
+          //   image: AssetImage('images/back.png'),
+          //   fit: BoxFit.cover,
+          // ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
               child: Container(
                 color: Colors.black.withOpacity(0.3),
-                child: Column(
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(25),
-                          child: Column(
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.only(left: 0),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'What we\'re trying to do?',
-                                          style: TextStyle(
-                                              fontSize: 25,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Reinvent collaborative work in a way that is more productive, more engaging, and more effecient.',
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Divider(
-                                color: Colors.white,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.only(left: 0),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'Who are we?',
-                                          style: TextStyle(
-                                              fontSize: 25,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'We\'re a team of passionate and dedicated developers from egypt who are trying to make a difference in the world and make something that will change the way we work.',
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                color: Colors.white,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.only(left: 0),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'Future Plans',
-                                          style: TextStyle(
-                                              fontSize: 25,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'We\'re planning to add more features to the platform and make it more powerful and useful for everyone. things like live chat, video conferencing, and AI powered suggestions are on the way.',
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                ],
-                              ),
-                            ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(25.0),
+                        child: CircleAvatar(
+                          radius: 100,
+                          backgroundImage: AssetImage('images/icon.png'),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: ListView.separated(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: paints.length, // Adjust the number of items as needed
+                          itemBuilder: (context, index) =>
+                              buildcomponentitem(paints[index]),
+                          separatorBuilder: (context, index) => SizedBox(
+                            width: 20,
                           ),
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
         ),
+        
       ),
     );
   }
+
+  Widget buildcomponentitem(PaintModel paint) => InkWell(
+        onTap: () {
+          currentPaint = paint.name;
+          currentPaintID = paint.id;
+
+          // Navigator.popAndPushNamed(context, WorkSpaceScreen.id);
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Container(
+            width: 600,
+            decoration: BoxDecoration(
+              color: Colors.grey.withOpacity(0.6),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            '${paint.prices}\$',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                              color: Color.fromARGB(255, 34, 236, 41),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text(
+                            '${paint.name}',
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        textAlign: TextAlign.end,
+                        '${paint.Describtion}',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.white,
+                        ),
+                        maxLines: 4,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Container(
+                    height: 140,
+                    width: 125,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(
+                            'images/tray.png',
+                          ),
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
 }

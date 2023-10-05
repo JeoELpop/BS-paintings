@@ -1,16 +1,16 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:ui';
-import 'package:bs/modules/aboutus/aboutus_screen.dart';
 import 'package:bs/modules/contact/contact_screen.dart';
 import 'package:bs/modules/main_home/main_home.dart';
 import 'package:bs/shared/components.dart';
 import 'package:bs/shared/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({super.key, required this.title});
+class MobileProducts extends StatefulWidget {
+  MobileProducts({super.key, required this.title});
 
   final String title;
   
@@ -27,10 +27,10 @@ void openURL(String url) async {
  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
-  static String id = 'HomePage';
+  static String id = 'MobileProducts';
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MobileProducts> createState() => _MobileProductsState();
 }
 
 List<PaintModel> paints = [
@@ -104,7 +104,7 @@ List<PaintModel> paints = [
   }
 
 
-class _HomePageState extends State<HomePage> {
+class _MobileProductsState extends State<MobileProducts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -189,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   child: TextButton(
                                     onPressed: () {
-                                      Navigator.pushNamed(context, HomePage.id);
+                                      Navigator.pushNamed(context, MainHomePage.id);
                                     },
                                     child: Row(
                                       children: [
@@ -363,36 +363,23 @@ class _HomePageState extends State<HomePage> {
               filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
               child: Container(
                 color: Colors.black.withOpacity(0.3),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(50.0),
-                        child: CircleAvatar(
-                          radius: 200,
-                          backgroundImage: AssetImage('images/icon.png'),
+                child: Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      height:
+                          540, // Set the desired height for the horizontal list
+                      child: ListView.separated(
+                        itemCount: paints
+                            .length, // Adjust the number of items as needed
+                        itemBuilder: (context, index) =>
+                            buildcomponentitem(paints[index]),
+                        separatorBuilder: (context, index) => SizedBox(
+                          width: 20,
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Container(
-                          height:
-                              540, // Set the desired height for the horizontal list
-                          child: ListView.separated(
-                            itemCount: paints
-                                .length, // Adjust the number of items as needed
-                            itemBuilder: (context, index) =>
-                                buildcomponentitem(paints[index]),
-                            separatorBuilder: (context, index) => SizedBox(
-                              width: 20,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
@@ -419,15 +406,25 @@ class _HomePageState extends State<HomePage> {
             ),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Row(
+                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
+                     children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
+                          Text(
+                            '${paint.name}',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.white,
+                            ),
+                          ),
                           Text(
                             '${paint.prices}\$',
                             style: TextStyle(
@@ -436,19 +433,29 @@ class _HomePageState extends State<HomePage> {
                               color: Color.fromARGB(255, 34, 236, 41),
                             ),
                           ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Text(
-                            '${paint.name}',
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w900,
-                              color: Colors.white,
-                            ),
-                          ),
                         ],
                       ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Container(
+                        height: 100,
+                        width: 80,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                'images/tray.png',
+                              ),
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(20))),
+                  ),
+                     ],
+                   ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
                       SizedBox(
                         height: 5,
                       ),
@@ -466,18 +473,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                   SizedBox(
                     width: 30,
-                  ),
-                  Container(
-                    height: 140,
-                    width: 125,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(
-                            'images/tray.png',
-                          ),
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
                   ),
                 ],
               ),

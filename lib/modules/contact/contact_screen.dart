@@ -1,10 +1,8 @@
 import 'dart:ui';
-import 'package:bs/modules/aboutus/aboutus_screen.dart';
-import 'package:bs/modules/home/homepage.dart';
+import 'package:bs/modules/products/products_page.dart';
 import 'package:bs/modules/main_home/main_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Contact extends StatefulWidget {
@@ -112,7 +110,7 @@ void openURL(String url) async {
                                   ),
                                   child: TextButton(
                                     onPressed: () {
-                                      Navigator.pushNamed(context, HomePage.id);
+                                      Navigator.pushNamed(context, Products.id);
                                     },
                                     child: Row(
                                       children: [
